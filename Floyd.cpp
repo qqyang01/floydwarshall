@@ -16,34 +16,61 @@ void floyd(int n, int W[5][5], int D[5][5], int P[5][5])
 		for(j = 0; j<n; j++)
 			for (i = 0; i < n; i++) {
 				if (D[i][k] + D[k][j] < D[i][j]&& D[i][k] != 1000000 && D[k][j] !=1000000) {
-					P[i][k] = P[k][j];
+					P[i][j] = k+1;
 					D[i][j] = D[i][k] + D[k][j];
 				}
 			}
 }
 
-void path(int q, int r, int P[5][5])
-{
-	if (P[q][r] != 0) {
-		path(q, P[q][r], P);
-		cout << "v" << P[q][r];
-		path(P[q][r], r, P);
 
-	}
-}
-
-void printSolution(int D[5][5])
+void printSolution(int D[5][5], int P[5][5])
 	{
+	cout << "Final Distances" << endl;
 		for (int i = 0; i < 5; i++)
 		{
 			for (int j = 0; j < 5; j++)
 			{
 				if (D[i][j] == 1000000)
-					cout << "inf" << "     ";
+					cout  <<"inf" << "     ";
 				else
 					cout << D[i][j] << "     ";
 			}
 			cout << endl;
+			
+		}
+		cout << "Final Paths " << endl;
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				if (P[i][j] == 1000000)
+					cout << "inf" << "     ";
+				else
+					cout << P[i][j] << "     ";
+			}
+			cout << endl;
+		}
+		cout << "Shortest Paths: Decoded " << endl;
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				if (j != i && P[i][j] != -1)
+				{
+					cout << "From vertex " << i + 1 << " to vertex " << j + 1 << ": " << i + 1 << " ";
+					path(P, i, j);
+					cout << j + 1 << endl;
+				}
+			}
 		}
 	}
+
+void path(int P[5][5], int i, int j)
+{
+	if (P[i][j] != 0) {
+		path(P, i, P[i][j]);
+		cout << "v " << P[i][j];
+		path(P, P[i][j], j);
+	}
+}
 
