@@ -24,6 +24,6 @@ int main() {
 		}
 	}
 	floyd(5, W, D, P);
-	printSolution(D);
-	path(0, 0, P);
+	cout << "\n";
+	printSolution(D, P);
 }
