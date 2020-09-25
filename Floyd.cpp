@@ -1,9 +1,8 @@
 #include "Floyd.h"
 #include <iostream>
 using namespace std;
-
 #pragma once
-void floyd(int n, int W[][100], int D[][100], int P[][100])
+void floyd(int n, int W[5][5], int D[5][5], int P[5][5])
 {
 	int i, j, k;
 	for (i = 1; i <= n; i++)
@@ -20,11 +19,12 @@ void floyd(int n, int W[][100], int D[][100], int P[][100])
 				}
 }
 
-void path(int q, int r) {
+void path(int q, int r, int P[5][5])
+{
 	if (P[q][r] != 0) {
-		path(q, P[q][r]);
+		path(q, P[q][r], P);
 		cout << "v" << P[q][r];
-		path(P[q][r], r);
+		path(P[q][r], r, P);
 
 	}
 }
