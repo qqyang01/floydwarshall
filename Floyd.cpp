@@ -15,7 +15,7 @@ void floyd(int n, int W[5][5], int D[5][5], int P[5][5])
 	for(k = 0; k<n; k++)
 		for(j = 0; j<n; j++)
 			for (i = 0; i < n; i++) {
-				if (D[i][k] + D[k][j] < D[i][j]&& D[i][k] != 100 && D[k][j] !=1000000) {
+				if (D[i][k] + D[k][j] < D[i][j]&& D[i][k] != 1000000 && D[k][j] !=1000000) {
 					P[i][k] = P[k][j];
 					D[i][j] = D[i][k] + D[k][j];
 				}
