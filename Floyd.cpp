@@ -8,7 +8,9 @@ void floyd(int n, int W[5][5], int D[5][5], int P[5][5])
 	for (i = 1; i <= n; i++)
 		for (j = 1; j <= n; j++)
 			P[i][j] = 0;
-	D = W;
+	for (int u = 0; u < 5; u++)
+		for (int t = 0; t < 5; t++)
+			D[u][t] = W[u][t];
 
 	for(k = 1; k<=n; k++)
 		for(j = 1; j<=n; j++)
