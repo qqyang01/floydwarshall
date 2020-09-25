@@ -1,4 +1,7 @@
 #include "Floyd.h"
+#include <iostream>
+using namespace std;
+
 #pragma once
 void floyd(int n, int W[][100], int D[][100], int P[][100])
 {
@@ -15,4 +18,13 @@ void floyd(int n, int W[][100], int D[][100], int P[][100])
 					P[i][j] = k;
 					D[i][j] = D[i][k] + D[k][j];
 				}
+}
+
+void path(int q, int r) {
+	if (P[q][r] != 0) {
+		path(q, P[q][r]);
+		cout << "v" << P[q][r];
+		path(P[q][r], r);
+
+	}
 }
