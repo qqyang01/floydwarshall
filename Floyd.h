@@ -1,4 +1,5 @@
 #pragma once
-void floyd(int n, int W[5][5], int D[5][5], int P[5][5]);
-void printSolution(int D[5][5], int P[5][5]);
-void path(int P[5][5], int i, int j);
+#define N 3
+void floyd(int n, int W[N][N], int D[N][N], int P[N][N]);
+void printSolution(int D[N][N], int P[N][N]);
+void path(int P[N][N], int i, int j);
