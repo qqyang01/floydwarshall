@@ -1,5 +1,6 @@
 #include "Floyd.h"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 #pragma once
 void floyd(int n, int W[5][5], int D[5][5], int P[5][5])
@@ -25,29 +26,48 @@ void floyd(int n, int W[5][5], int D[5][5], int P[5][5])
 
 void printSolution(int D[5][5], int P[5][5])
 {
-
+	int setDist = 7;
+	int setDist2 = 2;
+	char fill = ' ';
 	cout << "Final Distances" << endl;
+	cout << "     ";
+	for (int i = 1; i < 6; i++) {
+		
+		cout << setw(setDist) << setfill(fill) << i;
+	}
+	cout <<endl << "   -------------------------------" <<endl;
+	
 	for (int i = 0; i < 5; i++)
 	{
+		cout << "  ";
+		cout << i + 1 << "| ";
 		for (int j = 0; j < 5; j++)
 		{
 			if (D[i][j] == 1000000)
-				cout << "inf" << "     ";
+				cout <<setw(setDist2)<< setfill(fill)<<"inf" << "     ";
 			else
-				cout << D[i][j] << "     ";
+				cout <<setw(setDist2) << setfill(fill) << D[i][j] << "     ";
 		}
 		cout << endl;
 
 	}
 	cout << "Final Paths " << endl;
+	cout << "     ";
+	for (int i = 1; i < 6; i++) {
+		
+		cout << setw(setDist) << setfill(fill) << i;
+	}
+	cout << endl << "   -------------------------------" << endl;
 	for (int i = 0; i < 5; i++)
 	{
+		cout << "  ";
+		cout << i + 1 << "| ";
 		for (int j = 0; j < 5; j++)
 		{
 			if (P[i][j] == 1000000)
-				cout << "inf" << "     ";
+				cout << setw(setDist2) << setfill(fill) << "inf" << "     ";
 			else
-				cout << P[i][j] << "     ";
+				cout <<setw(setDist2) << setfill(fill)<< P[i][j] << "     ";
 		}
 		cout << endl;
 	}
